@@ -8,19 +8,24 @@ pythotree is a tool. It can help you organizing notes.
 ## 安装使用教程
 本项目源码用python编写，在安装有python编译环境的电脑上可以直接在本地运行。为了能多终端使用，使用了网络数据同步功能，提升学习效率，手机端可以通过Qpython用命令行检出知识树。如果有服务器资源的可以用python服务器支持WEB多端浏览。
 ### python安装
-本项目需要电脑安装pyton编译环境。一般情况下Linux会自带，Windows需要自行到w[python官网](https://www.python.org/downloads/)下载安装。
+本项目需要电脑安装pyton编译环境。一般情况下Linux会自带，Windows需要自行到[python官网](https://www.python.org/downloads/)下载安装。
 Windows系统安装后Win+R 运行"CMD"，在命令行窗口中输入python命令无错误信息即安装成功。
-'''
+```
 C:\Users\Administrator>python
+
 Python 3.8.0 (tags/v3.8.0:fa919fd, Oct 14 2019, 19:37:50) [MSC v.1916 64 bit (AMD64)] on win32
+
 Type "help", "copyright", "credits" or "license" for more information.
+
 >>>
-'''
+```
 学习知识时打开工具的添加/检索界面，即可完成知识点/树的添加和检出。软件入口单一，使用简单方便。为了后期管理方便，电脑端设置有树的复制和修改等功能。
 
 注意：
 1、经过本人长期学习实践的结果，添加和检出过程只设置手工录入。
+
 2、添加时要求学习的人在录入知识点时做到有条理，尽量剔除不必要的信息。这样能避免记忆冗余，影响学习效率。也能避免检索时出现大量冗余信息，干扰学习。切记，同时出现信息越是处在相近的联想范围和语义场，学习效率越高，学习干扰越小。
+
 3、对于通用的知识学习，建议从权威机构的官方文件学起，建立好知识树的骨架后再根据学习资源的情况制定学习计划，完善知识树。
 
 # 关于作者
