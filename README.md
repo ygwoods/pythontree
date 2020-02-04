@@ -12,11 +12,8 @@ pythotree is a tool. It can help you organizing notes.
 Windows系统安装后Win+R 运行"CMD"，在命令行窗口中输入python命令无错误信息即安装成功。
 ```
 C:\Users\Administrator>python
-
 Python 3.8.0 (tags/v3.8.0:fa919fd, Oct 14 2019, 19:37:50) [MSC v.1916 64 bit (AMD64)] on win32
-
 Type "help", "copyright", "credits" or "license" for more information.
-
 >>>
 ```
 学习知识时打开工具的添加/检索界面，即可完成知识点/树的添加和检出。软件入口单一，使用简单方便。为了后期管理方便，电脑端设置有树的复制和修改等功能。
