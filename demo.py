@@ -2,6 +2,7 @@ import tool as t
 from tkinter import Tk,Entry,Label,Menu,Text,Toplevel
 from tkinter.ttk import *
 from tkinter.font import Font
+from tkinter.messagebox import *
 from icon import icon
 import base64
 import os
@@ -16,12 +17,7 @@ class Tool(Tk):
         self.style.configure("F.TButton", relief='flat',font=('tahoma','16','normal'),foreground="black", background="white")
         self.style.configure("L.Treeview", borderwidth=1,relief='flat',foreground="black", background="white")
         self.title('树图笔记')
-        try:
-            self.pos=t.root.pos
-        except BaseException:
-            self.pos=('400','550','300','0')
-            t.root.pos=self.pos
-        self.geometry("%sx%s+%s+%s"%self.pos)
+        self.geometry("%sx%s+%s+%s"%t.root.pos)
         with open("tmp.ico","wb+") as f:
             f.write(base64.b64decode(icon))
         self.iconbitmap("tmp.ico")
@@ -58,8 +54,8 @@ class Tool(Tk):
         menubar.add_command(label = "About",command = self.about)
         #self.fMenu.add_command(label='open', command=None)
         self.fMenu.add_command(label='Save', command=t.dump)
-        #self.fMenu.add_command(label='download', command=None)
-        #self.fMenu.add_command(label='upload', command=None)
+        self.fMenu.add_command(label='Save to Server', command=lambda :showinfo(message=t.dumptoweb()))
+        self.fMenu.add_command(label='Load Server Data', command=lambda :showinfo(message=t.load()))
         self.eMenu.add_command(label='Copy  Tree', command=None)
         self.eMenu.add_command(label='Paste Tree', command=None)
         self.eMenu.add_command(label='Del   Tree', command=self.delete)
@@ -95,13 +91,17 @@ class Tool(Tk):
         for i in ['0','1','2','3','4','5','6','7','8','9']:self.bind("<KeyPress-%s>"%i,self.treeishow)
         #self.treeview.bind('<2>',self.copy_tree)
         for i in ['<Return>','<Delete>','<Up>']:self.searchview.bind(i,self.action)
+    def saveto(self):
+        t.dumptoweb()
+
+    t.dumptoweb
     def openweb(self,urls):
         webbrowser.open(urls)
     def showtextboard(self):
         if not self.top:
             self.top=Toplevel()
-            x=self.pos
-            self.top.geometry("%sx%s+%s+%s"%('600',x[1],str(int(x[0])+int(x[2])+10),x[3]))
+            x=t.root.pos
+            self.top.geometry("%sx%s+%s+%s"%(str(int(self.winfo_screenwidth())-int(x[0])-int(x[2])),x[1],str(int(x[0])+int(x[2])+10),x[3]))
             self.top.overrideredirect(1)
             self.top.attributes('-alpha', 0.95)
             ft=Font(family='等线',size=12)
@@ -118,10 +118,10 @@ class Tool(Tk):
             self.tbflag=True
     def tbset(self,e):
         if e.widget==self and int(e.width)>300:
-            self.pos=t.root.pos=(e.width,str(int(e.height)+25),e.x,e.y)
+            t.root.pos=(e.width,str(int(e.height)+25),e.x,e.y)
             print(e)
         if self.tbflag:
-            x=self.pos
+            x=t.root.pos
             print(x)
             self.top.geometry("%sx%s+%s+%s"%(str(int(self.winfo_screenwidth())-int(x[0])-int(x[2])),x[1],str(int(x[0])+int(x[2])+10),x[3]))
     def about(self):
@@ -169,8 +169,8 @@ class Tool(Tk):
         if e.keysym=='Return':
             t.query(entr_str)
             lv=''
+            for item in self.listview.get_children():self.listview.delete(item)
             for i in range(0,len(t.querylist)):
-                for item in self.listview.get_children():self.listview.delete(item)
                 tg=lk=''
                 if hasattr(t.querylist[i], 'tag'):tg=t.querylist[i].tag
                 if hasattr(t.querylist[i],'link'):lk=t.querylist[i].link
