@@ -5,9 +5,8 @@ from tree import *
 querylist=[]
 
 def load():
-    fr =requests.get(root.url+'data')
+    fr =requests.get(root.url+'/data')
     if fr.status_code==200:
-        print('netwerk is ok')
         with open('data','wb+') as f:
             f.write(fr.content)
         return 'Data loaded, restart to check.'
@@ -24,7 +23,7 @@ def dumptoweb():
             p.dump(root,f)
         with open('data','rb') as f:
             files={'a':f}
-            t=requests.post(root.url+'upload.php',files=files)
+            t=requests.post(root.url+'/upload.php',files=files)
             if 200 == t.status_code:return 'ok'
             else:return 'network error:'+t
 
@@ -34,15 +33,14 @@ def initdata():
             return p.load(f)
     else:
         tr=Tree('root')
-        tr.pos=('400','550','300','0')
-        tr.url='http://192.168.0.100/'
+        tr.pos=('600','550','300','0')
+        tr.url='http://localhost'
         return tr
 activetree=root=initdata()    
 def add(node):
     if node is Tree:
         node.parent=activetree
         activetree.child.append(node)
-        print(node.parent)
     else:
         tr=Tree(node,parent=activetree)
         activetree.child.append(tr)
@@ -91,7 +89,6 @@ def layer():
     return a
 def router(str):
     global activetree,root
-    #if len(str)<=1:print('help message')
     if len(str)<=2:#pick a tree
         try:
             i=int(str)

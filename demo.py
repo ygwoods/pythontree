@@ -26,7 +26,6 @@ class Tool(Tk):
         self.top=None
         self.tbflag=False
 
-        
         #define view windget
 
         self.treeview=Treeview(self,height=27,show="tree");self.treeview.heading('#0',text='树目')
@@ -64,7 +63,6 @@ class Tool(Tk):
         self.sMenu.add_command(label='Current version：0.1', command=None)
         self.config(menu=menubar)
 
-
         #layout view
         self.tbar.pack(side='bottom',fill='x',expand=1,anchor="s")
         self.treeview.pack(side='left',fill='y',ipadx=50,anchor="w")
@@ -91,10 +89,11 @@ class Tool(Tk):
         for i in ['0','1','2','3','4','5','6','7','8','9']:self.bind("<KeyPress-%s>"%i,self.treeishow)
         #self.treeview.bind('<2>',self.copy_tree)
         for i in ['<Return>','<Delete>','<Up>']:self.searchview.bind(i,self.action)
+        self.searchview.bind('<Shift-KeyPress-7>',self.seturl)
+    def seturl(self,e):
+        t.root.url=self.searchview.get()
     def saveto(self):
         t.dumptoweb()
-
-    t.dumptoweb
     def openweb(self,urls):
         webbrowser.open(urls)
     def showtextboard(self):
@@ -119,10 +118,8 @@ class Tool(Tk):
     def tbset(self,e):
         if e.widget==self and int(e.width)>300:
             t.root.pos=(e.width,str(int(e.height)+25),e.x,e.y)
-            print(e)
         if self.tbflag:
             x=t.root.pos
-            print(x)
             self.top.geometry("%sx%s+%s+%s"%(str(int(self.winfo_screenwidth())-int(x[0])-int(x[2])),x[1],str(int(x[0])+int(x[2])+10),x[3]))
     def about(self):
         pass
