@@ -16,13 +16,17 @@ def dump():
     if isinstance(root,Tree):
         with open('data','wb+') as f:
             p.dump(root,f)
-        with open('root.txt','w+') as f:
-            t.root.layer=0
-            stk=[t.root] 
+        with open('root.txt','w+',encoding='utf-8') as f:
+            root.layer=0
+            stk=[root] 
             while stk:
                 tr = stk.pop()
-                tr.layer=tr.parent.layer+1
-                f.write(tr.layer+'/t'+tr.node+'/t'+tr.text+'/n')
+                if not hasattr(tr,'layer'):
+                    tr.layer=tr.parent.layer+1
+                if hasattr(tr,'text'):
+                    f.write(str(tr.layer)+'\t'+tr.node+'\t'+'tr.text'+'\n')
+                else:
+                    f.write(str(tr.layer)+'\t'+tr.node+'\t'+''+'\n')
                 if tr.child:
                     stk.extend(tr.child)
 
