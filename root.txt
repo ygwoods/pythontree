@@ -1,0 +1,75 @@
+0	root	
+1	汉字	
+2	空	
+3	右	
+3	左	
+3	中	
+3	下	
+3	上	
+3	体	
+4	物	
+5	生	
+6	微	
+6	植	
+6	动	
+7	人	
+8	嘴	
+9	说	
+8	他	
+8	我	
+8	你	
+4	地	
+5	土	
+5	火	
+5	水	
+5	木	
+5	金	
+4	天	
+5	电	
+5	雷	
+5	雨	
+5	风	
+3	面	
+3	线	
+3	点	
+2	时	
+1	password	tr.text
+1	inkscape	tr.text
+1	vscode	
+2	shotkey	tr.text
+1	android	
+2	point	tr.text
+2	project	
+3	BLE	tr.text
+3	viewtobitmap	tr.text
+3	app	
+4	changename	tr.text
+3	showSVG	tr.text
+3	appico	tr.text
+2	object	
+3	SoundPool	tr.text
+3	TextToSpeech	tr.text
+3	InputEvent	
+4	MotionEvent	tr.text
+3	Activity	tr.text
+3	View	tr.text
+4	ViewRootImpl	tr.text
+4	LayoutInflater	tr.text
+3	DecorView	tr.text
+3	ViewGroup	
+4	LayoutParams	tr.text
+3	WindowManager	tr.text
+4	WindowManagerGlobal	tr.text
+3	Window	tr.text
+4	PhoneWindow	tr.text
+3	ViewManager	tr.text
+1	python	
+2	lib	
+3	pillow	tr.text
+2	bitmap	
+3	sort	
+2	pywin32	
+2	tkinter	
+3	events	tr.text
+1	java	tr.text
+2	tkinter	
